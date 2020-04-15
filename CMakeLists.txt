@@ -133,7 +133,7 @@ add_executable(publisher_node                       src/string_publisher.cpp)
 add_executable(subscriber_node                      src/string_subscriber.cpp)
 add_executable(service_server_node                  src/service_server.cpp)
 add_executable(service_client_node                  src/service_client.cpp)
-add_executable(service_client_sum_two_numbers_node  src/service_server_add_two_numbers.cpp)
+#add_executable(service_client_sum_two_numbers_node  src/service_server_add_two_numbers.cpp)
 
 
 
@@ -146,7 +146,7 @@ target_link_libraries(publisher_node                       ${catkin_LIBRARIES} )
 target_link_libraries(subscriber_node                      ${catkin_LIBRARIES} )
 target_link_libraries(service_server_node                  ${catkin_LIBRARIES} )
 target_link_libraries(service_client_node                  ${catkin_LIBRARIES} )
-target_link_libraries(service_client_sum_two_numbers_node  ${catkin_LIBRARIES} )
+#target_link_libraries(service_client_sum_two_numbers_node  ${catkin_LIBRARIES} )
 
 
 #############
