@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -51,11 +52,11 @@ catkin_python_setup()
 # )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
+add_service_files(
+   FILES
+   SumTwoNumbers.srv
 #   Service2.srv
-# )
+ )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -65,10 +66,10 @@ catkin_python_setup()
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+generate_messages(
+   DEPENDENCIES
+   std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -102,7 +103,7 @@ catkin_python_setup()
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES hello_world
-#  CATKIN_DEPENDS std_msgs
+  CATKIN_DEPENDS message_runtime
 #  DEPENDS system_lib
 )
 
@@ -128,17 +129,25 @@ include_directories(
 # add_dependencies(hello_world ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(publisher_node  src/string_publisher.cpp)
-add_executable(subscriber_node src/string_subscriber.cpp)
+add_executable(publisher_node                       src/string_publisher.cpp)
+add_executable(subscriber_node                      src/string_subscriber.cpp)
+add_executable(service_server_node                  src/service_server.cpp)
+add_executable(service_client_node                  src/service_client.cpp)
+add_executable(service_client_sum_two_numbers_node  src/service_server_add_two_numbers.cpp)
+
+
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(hello_world_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(publisher_node   ${catkin_LIBRARIES} )
-target_link_libraries(subscriber_node  ${catkin_LIBRARIES} )
- 
+target_link_libraries(publisher_node                       ${catkin_LIBRARIES} )
+target_link_libraries(subscriber_node                      ${catkin_LIBRARIES} )
+target_link_libraries(service_server_node                  ${catkin_LIBRARIES} )
+target_link_libraries(service_client_node                  ${catkin_LIBRARIES} )
+target_link_libraries(service_client_sum_two_numbers_node  ${catkin_LIBRARIES} )
+
 
 #############
 ## Install ##
